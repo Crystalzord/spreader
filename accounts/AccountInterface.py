@@ -1,2 +1,0 @@
-class AccountInterface:
-    pass

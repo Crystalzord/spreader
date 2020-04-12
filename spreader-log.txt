@@ -1,0 +1,3 @@
+2020-04-12 23:12:53,171 [INFO] emails.EmailSnailPro: Created EmailSnailPro object with url: https://smailpro.com/ and driver: <selenium.webdriver.chrome.webdriver.WebDriver (session="fc2205e4944e782f7f74d08858b9faec")>
+2020-04-12 23:12:57,161 [INFO] emails.EmailSnailPro: Generated email is: vivienne79136@stempmail.com
+2020-04-12 23:12:57,161 [INFO] sites.AgentJbzd: Created Jbzd object with url: https://jbzd.com.pl/ and driver: <selenium.webdriver.chrome.webdriver.WebDriver (session="fc2205e4944e782f7f74d08858b9faec")> 

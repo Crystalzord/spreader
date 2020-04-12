@@ -5,8 +5,10 @@ class FormalEmailInterface(metaclass=abc.ABCMeta):
     @classmethod
     def __subclasshook__(cls, subclass):
         return (hasattr(subclass, 'get_temp_email') and
-                callable(subclass.get_temp_email) or
-                NotImplemented)
+                callable(subclass.get_temp_email) and
+                (hasattr(subclass, 'activate_account') and
+                callable(subclass.activate_account) or
+                NotImplemented))
 
     @abc.abstractmethod
     def get_temp_email(self) -> str:
@@ -14,6 +16,6 @@ class FormalEmailInterface(metaclass=abc.ABCMeta):
         raise NotImplementedError
 
     @abc.abstractmethod
-    def get_activation_link(self) -> str:
+    def activate_account(self) -> str:
         """"Get account activation link"""
         raise NotImplementedError

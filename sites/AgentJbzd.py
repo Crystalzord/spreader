@@ -1,10 +1,15 @@
+import logging
+
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.ui import WebDriverWait
-from utils import DriverManager
+
 from sites.FormalAgenttInterface import FormalAgenttInterface
+from utils import DriverManager
+
+logger = logging.getLogger(__name__)
 
 
 class AgentJbzd(FormalAgenttInterface):
@@ -12,7 +17,7 @@ class AgentJbzd(FormalAgenttInterface):
     def __init__(self, driver: webdriver, url: str):
         self.url = url
         self.driver = driver
-        print("Created Jbzd object with url: {} and driver: {} ".format(self.url, self.driver))
+        logger.info("Created Jbzd object with url: {} and driver: {} ".format(self.url, self.driver))
 
     def register_account(self, email: str):
         DriverManager.open_tab(self.driver, self.url)
@@ -23,7 +28,7 @@ class AgentJbzd(FormalAgenttInterface):
             WebDriverWait(self.driver, 20).until(
                 ec.element_to_be_clickable((By.XPATH, '//a[@class="banner_continue--3gvVl"]'))).click()
         except NoSuchElementException:
-            print("Alert not present")  # TODO: Add logger here
+            logger.info("Cookie alert not present on {}".format(self.url))
 
         self.driver.find_element_by_xpath('//div[@class="tab"]/span[contains(text(), "Załóż konto")]').click()
 

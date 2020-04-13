@@ -4,28 +4,11 @@ from configparser import ConfigParser
 from emails.EmailSnailPro import EmailSnailPro
 from sites.AgentJbzd import AgentJbzd
 from utils import DriverManager
-
-
-def setup_logger():
-    logger = logging.getLogger()
-    logger.setLevel(logging.INFO)
-
-    fh = logging.FileHandler('spreader-log.txt')
-    fh.setLevel(logging.INFO)
-    ch = logging.StreamHandler()
-    ch.setLevel(logging.ERROR)
-
-    formatter = logging.Formatter('%(asctime)s [%(levelname)s] %(name)s: %(message)s')
-
-    ch.setFormatter(formatter)
-    fh.setFormatter(formatter)
-
-    logger.addHandler(ch)
-    logger.addHandler(fh)
+from utils import Logger
 
 
 if __name__ == '__main__' and __package__ is None:
-    setup_logger()
+    Logger.setup_logger()
 
     # Read config.ini
     config = ConfigParser()
@@ -38,5 +21,5 @@ if __name__ == '__main__' and __package__ is None:
     email_agent = EmailSnailPro(driver, email_provider_url)
     temp_email = email_agent.get_temp_email()
 
-    site_agent = AgentJbzd(driver, target_site_url)
+    site_agent = AgentKomixxy(driver, target_site_url)
     site_agent.register_account(temp_email)

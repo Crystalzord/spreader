@@ -1,8 +1,8 @@
 from configparser import ConfigParser
 
 from emails.EmailSnailPro import EmailSnailPro
-from sites.AgentKomixxy import AgentKomixxy
-from utils import DriverManager
+from sites.AgentJbzd import AgentJbzd
+from utils import BrowserManager
 from utils import Logger
 
 if __name__ == '__main__' and __package__ is None:
@@ -14,10 +14,10 @@ if __name__ == '__main__' and __package__ is None:
     email_provider_url = config['GENERAL']['EmailProvider']
     target_site_url = config['GENERAL']['TargetSite']
 
-    driver = DriverManager.init_driver()
+    driver = BrowserManager.init_driver()
 
     email_agent = EmailSnailPro(driver, email_provider_url)
     temp_email = email_agent.get_temp_email()
 
-    site_agent = AgentKomixxy(driver, target_site_url)
+    site_agent = AgentJbzd(driver, target_site_url)
     site_agent.register_account(temp_email)

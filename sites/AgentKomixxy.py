@@ -7,7 +7,7 @@ from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.ui import WebDriverWait
 
 from sites.FormalAgenttInterface import FormalAgenttInterface
-from utils import DriverManager
+from utils import BrowserManager
 
 logger = logging.getLogger(__name__)
 
@@ -20,8 +20,8 @@ class AgentKomixxy(FormalAgenttInterface):
         logger.info("Created Komixxy object with url: {} and driver: {} ".format(self.url, self.driver))
 
     def register_account(self, email: str):
-        DriverManager.open_tab(self.driver, self.url)
-        DriverManager.switch_to_tab(self.driver)
+        BrowserManager.open_new_tab(self.driver, self.url)
+        BrowserManager.switch_to_newest_tab(self.driver)
         # TODO: fill form
 
     def login(self):

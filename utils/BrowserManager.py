@@ -11,12 +11,12 @@ def init_driver() -> webdriver:
     return driver
 
 
-def open_tab(driver: webdriver, url: str):
+def open_new_tab(driver: webdriver, url: str):
     driver.execute_script('window.open("' + url + '","_blank");')
 
 
 # TODO: make it more generic (switch to tab with title instead)
-def switch_to_tab(driver: webdriver):
+def switch_to_newest_tab(driver: webdriver):
     driver.switch_to.window(driver.window_handles[-1])
 
 

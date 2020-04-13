@@ -13,8 +13,16 @@ logger = logging.getLogger(__name__)
 
 
 class AgentKomixxy(FormalAgenttInterface):
+
+    def __init__(self, driver: webdriver, url: str):
+        self.url = url
+        self.driver = driver
+        logger.info("Created Komixxy object with url: {} and driver: {} ".format(self.url, self.driver))
+
     def register_account(self, email: str):
-        raise NotImplementedError
+        DriverManager.open_tab(self.driver, self.url)
+        DriverManager.switch_to_tab(self.driver)
+        # TODO: fill form
 
     def login(self):
         raise NotImplementedError

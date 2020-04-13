@@ -1,11 +1,9 @@
-import logging
 from configparser import ConfigParser
 
 from emails.EmailSnailPro import EmailSnailPro
-from sites.AgentJbzd import AgentJbzd
+from sites.AgentKomixxy import AgentKomixxy
 from utils import DriverManager
 from utils import Logger
-
 
 if __name__ == '__main__' and __package__ is None:
     Logger.setup_logger()
